@@ -1,5 +1,8 @@
 language: cpp
 compiler: gcc
+env:
+  global:
+    - CXX_FLAGS="-Wall -pedantic -Werror -Wno-variadic-macros -Wno-long-long -Wno-shadow -std=c++0x"
 script:
      - mkdir -p build
      - cd build
