@@ -18,12 +18,22 @@ bool is_space(const char symbol) {
     return false;
 }
 
+bool is_digit(const char symbol) {
+  switch (symbol) {
+  case '1': case '2': case '3': case '4': case '5':
+  case '6': case '7': case '8': case '9': case '0':
+    return true;
+  default:
+    return false;
+  }
+  return false;
+}
+
 std::vector<int> extract_numbers(const std::string expression) {
   std::vector<int> result;
   std::string current_token = "";
   for (auto symbol: expression) {
-    if (!is_operator(symbol) and
-	!is_space(symbol)) {
+    if (is_digit(symbol)) {
       current_token += std::to_string(symbol_map.at(symbol));
     }
     else {

@@ -2,10 +2,13 @@
 #include <calc.hpp>
 #include <vector>
 
-// adds two numbers
 
 TEST_CASE( "returns 5 for string 2 + 3", "[calculate]") {
   REQUIRE(calculate("2 + 3") == 5);
+}
+
+TEST_CASE( "returns 5 for string '  2 + 3 '", "[calculate]") {
+  REQUIRE(calculate("  2 + 3 ") == 5);
 }
 
 TEST_CASE( "returns 1 for string 0 +1", "[calculate]") {
@@ -77,3 +80,13 @@ TEST_CASE( "returns false if symbol is '+'", "[is_space]") {
   REQUIRE(is_space('+') == false);
 }
 
+TEST_CASE( "returns false if symbol is '-'", "[is_digit]") {
+  REQUIRE(is_digit('-') == false);
+}
+
+TEST_CASE( "returns true if symbol is digit", "[is_digit]") {
+  std::vector<char> digits = {'0', '1', '2', '3', '4', '5',
+			      '6', '7', '8', '9'};
+  for (auto digit: digits)
+    REQUIRE(is_digit(digit) == true);
+}

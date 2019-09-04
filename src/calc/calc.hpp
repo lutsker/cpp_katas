@@ -12,3 +12,5 @@ bool is_operator(const char symbol);
 
 bool is_space(const char symbol);
 
+bool is_digit(const char symbol);
+
