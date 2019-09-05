@@ -68,6 +68,10 @@ TEST_CASE( "returns true if symbol is '+'", "[is_opertor]") {
   REQUIRE(is_operator('+') == true);
 }
 
+TEST_CASE( "returns true if symbol is ';'", "[is_opertor]") {
+  REQUIRE(is_operator(';') == true);
+}
+
 TEST_CASE( "returns false if symbol is ' '", "[is_opertor]") {
   REQUIRE(is_operator(' ') == false);
 }
@@ -89,4 +93,26 @@ TEST_CASE( "returns true if symbol is digit", "[is_digit]") {
 			      '6', '7', '8', '9'};
   for (auto digit: digits)
     REQUIRE(is_digit(digit) == true);
+}
+
+TEST_CASE( "returns true if symbol is space", "[is_delimiter]") {
+  REQUIRE(is_delimiter(' ') == true);
+}
+
+TEST_CASE( "returns false if symbol is +", "[is_delimiter]") {
+  REQUIRE(is_delimiter('+') == false);
+}
+
+TEST_CASE( "returns 'hello;' if argument is 'hello'", "[extend_with_eol]") {
+  REQUIRE(extend_with_eol("hello") == "hello;");
+}
+
+TEST_CASE( "returns true if argument is empty string", "[is_empty_string]") {
+  const std::string empty_string = ""; 
+  REQUIRE(is_empty_string(empty_string) == true);
+}
+
+TEST_CASE( "returns false if argument is not empty string", "[is_empty_string]") {
+  const std::string not_empty_string = "?"; 
+  REQUIRE(is_empty_string(not_empty_string) == false);
 }
