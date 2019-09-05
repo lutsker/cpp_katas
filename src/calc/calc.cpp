@@ -36,10 +36,6 @@ bool is_delimiter(const char symbol) {
     return false;
 }
 
-std::string extend_with_eol(const std::string expression) {
-  return expression + ";";
-}
-
 bool is_empty_string(const std::string expression) {
   if (expression == "")
     return true;
@@ -53,17 +49,13 @@ bool is_empty_string(const std::string expression) {
 // expression: number operator number | number operator expression
 // token: string value, type type;
 
-class Token {
-  std::string value;
-  std::string type;
-};
-
 std::vector<int> extract_numbers(const std::string expression) {
   std::vector<int> result;
   std::string current_token = "";
   for (auto symbol: extend_with_eol(expression)) {
-    if (is_digit(symbol)) 
+    if (is_digit(symbol)) {
       current_token += std::to_string(symbol_map.at(symbol));
+    }
     else if (is_operator(symbol)) {
       if (!is_empty_string(current_token)) 
 	result.push_back(std::stoi(current_token));
